@@ -4,15 +4,9 @@ namespace WebApplication2
     {
         public static void Main(string[] args)
         {
-
-            WebApplicationOptions webApplicationOptions = new WebApplicationOptions
-            {
-                WebRootPath = "MyWebRoot",
-                Args = args, 
-                EnvironmentName = "Production",
-            };
-            var builder = WebApplication.CreateBuilder(webApplicationOptions);
+            var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
+            app.UseStaticFiles();
 
             app.MapGet("/", () => $"EnvironmentName: {app.Environment.EnvironmentName} \n" +
             $"ApplicationName: {app.Environment.ApplicationName} \n" +
