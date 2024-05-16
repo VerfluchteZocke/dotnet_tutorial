@@ -6,13 +6,15 @@ namespace WebApplication2
         {
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
+
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.MapGet("/", () => $"EnvironmentName: {app.Environment.EnvironmentName} \n" +
-            $"ApplicationName: {app.Environment.ApplicationName} \n" +
-            $"WebRootPath: {app.Environment.WebRootPath} \n" +
-            $"ContentRootPath: {app.Environment.ContentRootPath}");
-
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Request Handled and Response Generated");
+            });
+            //This will Run the Application
             app.Run();
         }
     }
