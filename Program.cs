@@ -4,7 +4,14 @@ namespace WebApplication2
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+
+            WebApplicationOptions webApplicationOptions = new WebApplicationOptions
+            {
+                WebRootPath = "MyWebRoot",
+                Args = args, 
+                EnvironmentName = "Production",
+            };
+            var builder = WebApplication.CreateBuilder(webApplicationOptions);
             var app = builder.Build();
 
             app.MapGet("/", () => $"EnvironmentName: {app.Environment.EnvironmentName} \n" +
