@@ -7,7 +7,7 @@ namespace WebApplication2
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
 
-            app.UseDefaultFiles();
+            app.UseDirectoryBrowser();
             app.UseStaticFiles();
 
             app.Run(async (context) =>
